@@ -2,13 +2,30 @@
 <html>
 <head>
 	<title>Node-Chat... Baby!!</title>
+	<link rel="stylesheet" href="styles.css">
 	<script type="text/javascript" src="/socket.io/socket.io.js"></script>
-</head>
-<body>
+	<script type="text/javascript">
 
-<input type="text">
+	var socketio = io.connect("127.0.0.1:21000");
+	socketio.on('message_to_client', function (data){
+		document.getElementById('chatWindow').innerHTML = ("<hr />" + data['message']) + document.getElementById('chatWindow').innerHTML;
+	});
+
+	function sendMessage(){
+		var message = document.getElementById('message').value;
+		socketio.emit('message_to_server',{
+			message: message
+		});
+	}	
+
+	</script>
+
+</head>
+<body style="background:darkgray">
+
+<input style="margin:10px 10px 0px 50px" type="text" id="message">
 <button onclick="sendMessage()">Send Message!</button>
-<div id="chatWindow"></div>
+<div style="background:gainsboro;line-height:.8;padding-bottom:10px" id="chatWindow"></div>
 
 </body>
 </html>
