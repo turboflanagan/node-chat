@@ -11,7 +11,7 @@ var server = http.createServer(function (request, response){
 	})
 });
 
-server.listen(21000);
+server.listen(21001);
 
 var io = require('socket.io').listen(server);
 
@@ -22,6 +22,8 @@ io.sockets.on('connection', function (socket){
 		})
 	})
 });
+
+
 
 
 
