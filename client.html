@@ -18,6 +18,7 @@
 		});
 		document.getElementById("message").value = "";
 		console.log("message");
+		event.preventDefault();
 	};
 
 
@@ -75,11 +76,17 @@
 </head>
 <body style="background:darkgray">
 <h1>Welcome to the Chat Room!</h1>
-<input type="text" id="message" placeholder="type your message here">
 <form onsubmit="sendMessage()">
+<input type="text" id="message" placeholder="type your message here">
 <button>Send Message!</button>
 </form>
+
 <div id="chatWindow"></div>
 
 </body>
 </html>
+
+
+
+
+
